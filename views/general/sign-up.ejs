@@ -1,0 +1,34 @@
+<!-- Base structure for sign-up html frame from: https://bootswatch.com/lux/ modified by Chanhee Han -->
+
+<div class="container mt-5">
+<p class="fw-bold text-center form-text text-dark fs-4">Create your account by entering your email adrress and choosing a password</p>
+
+<form method="post" action="/sign-up" class="border rounded p-4 shadow-sm border-dark">
+
+      <label for="firstName" class="form-label mt-4 text-center fs-6">First Name</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" value="<%= values.firstName %>">
+      <% if (validationMessages.firstName) { %>
+      <span style="color:red"> <%=validationMessages.firstName %> </span> <br/>
+      <% } %>
+      
+      <label for="lastName" class="form-label mt-4 text-center fs-6">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" value="<%= values.lastName %>">
+      <% if (validationMessages.lastName) { %>
+      <span style="color:red"> <%=validationMessages.lastName %> </span> <br/>
+      <% } %>
+
+      <label for="email" class="form-label mt-4 text-center fs-6">Email address</label>
+      <input type="text" class="form-control" id="email" name="email" value="<%= values.email %>">
+      <% if (validationMessages.email) { %>
+      <span style="color:red"> <%=validationMessages.email %> </span> <br/>
+      <% } %>
+   
+      <label for="passWord" class="form-label mt-4 text-center fs-6">Password</label>
+      <input type="password" class="form-control" id="passWord" name="passWord" value="<%= values.passWord %>" autocomplete="off">
+      <% if (validationMessages.passWord) { %>
+      <span style="color:red"> <%=validationMessages.passWord %> </span> <br/>
+      <% } %>
+
+    <button type="submit" class="btn btn-primary text-center mt-4 px-5">Submit</button>
+    
+</form>

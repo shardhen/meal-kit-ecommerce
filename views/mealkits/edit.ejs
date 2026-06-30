@@ -1,0 +1,55 @@
+<!--  Reference tag 
+// I used the layout reference for the editing an item. 
+// from https://getbootstrap.com/docs/5.3/forms/layout/ --> 
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">Edit Meal Kit</h2>
+
+    <form class="row g-3 shadow p-4 rounded bg-light" method="POST" action="/mealkits/edit/<%= mealKit._id %>" enctype="multipart/form-data">
+        
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Meal Kit Title</label>
+            <input type="text" name="title" class="form-control" value="<%= mealKit.title %>">
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Category</label>
+            <input type="text" name="category" class="form-control" value="<%= mealKit.category %>">
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Includes (Ingredients)</label>
+            <input type="text" name="includes" class="form-control" value="<%= mealKit.includes %>">
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Description</label>
+            <textarea name="description" class="form-control" rows="3"><%= mealKit.description %></textarea>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Update Meal Kit Image</label>
+            <input type="file" name="imageUrl" class="form-control">
+            <div class="form-text">Current path: <%= mealKit.imageUrl %></div>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Price ($)</label>
+            <input type="text" name="price" class="form-control" value="<%= mealKit.price %>">
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Cooking Time (min)</label>
+            <input type="number" name="cookingTime" class="form-control" value="<%= mealKit.cookingTime %>">
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Servings</label>
+            <input type="number" name="servings" class="form-control" value="<%= mealKit.servings %>">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary px-5 shadow">Update Product</button>
+            <a href="/mealkits/list" class="btn btn-outline-secondary px-3">Cancel</a>
+        </div>
+    </form>
+</div>

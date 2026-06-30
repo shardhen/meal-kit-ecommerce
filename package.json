@@ -1,0 +1,36 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "WEB322 Assignemtn1",
+  "keywords": [
+    "Mealkit",
+    "Delivery",
+    "Page",
+    "creation"
+  ],
+  "license": "ISC",
+  "author": "Chanhee Han",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass --no-source-map --watch scss:public/css"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.5.2",
+    "express-layouts": "^1.0.0",
+    "express-session": "^1.19.0",
+    "mailgun.js": "^12.7.1",
+    "mongoose": "^9.2.4",
+    "node": "^25.8.1",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
+}

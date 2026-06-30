@@ -1,0 +1,88 @@
+<!-- cart.ejs layout structure about adding and removing referred by Shopping Cart example from https://www.webslesson.info/2023/03/how-to-make-shopping-cart-in-nodejs.html#google_vignette
+I modified and adpated into my logic. -->
+
+<section class="container content-section my-5">
+    <h2 class="section-header fw-bold mb-4">SHOPPING CART</h2>
+<!--  Reference tag 
+// I used the layout of the alret for the confirmation message for the order. 
+// from https://getbootstrap.com/docs/5.3/components/alerts/-->
+<% if (typeof message !== 'undefined' && message) { %>
+    <div class="alert alert-success mt-4 text-center shadow-sm" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i> 
+        <strong>Success!</strong> <%= message %> 
+        <a href="/mealkits" class="alert-link">Continue shopping</a>.
+    </div>
+<% } %>
+
+    <% if (cart && cart.length > 0) { %>
+        <div class="cart-row d-none d-md-flex border-bottom pb-2 fw-bold text-secondary">
+            <span class="cart-item cart-header col-md-6">ITEM</span>
+            <span class="cart-price cart-header col-md-3 text-center">PRICE</span>
+            <span class="cart-quantity cart-header col-md-3 text-end">QUANTITY</span>
+        </div>
+
+       <div class="cart-items">
+    <% cart.forEach(item => { %>
+        <div class="cart-row row align-items-center py-4 border-bottom">
+            
+            <div class="col-md-6 d-flex align-items-center">
+                <img class="cart-item-image rounded shadow-sm" src="<%= item.mealkit.imageUrl %>" 
+                     style="width: 150px; height: 120px; object-fit: cover;">
+                
+                <div class="ms-4 d-flex flex-column justify-content-center">
+                    <span class="cart-item-title fs-5 fw-bold mb-1">
+                        <%= item.mealkit.title %>
+                    </span>
+                    <p class="text-muted small mb-0" style="line-height: 1.4; max-width: 300px;">
+                        <%= item.mealkit.includes %>
+                    </p>
+                </div>
+            </div> <div class="col-md-3 text-center fs-5">
+                $<%= item.mealkit.price.toFixed(2) %>
+            </div>
+            
+                        <div class="col-md-3 d-flex justify-content-end align-items-center">
+                        <div class="btn-group me-3 shadow-sm">
+                <form action="/cart/update-qty" method="POST" style="display:inline;">
+                    <input type="hidden" name="productId" value="<%= item.id %>">
+                    <input type="hidden" name="userInput" value="decrease">
+                    <button type="submit" class="btn btn-outline-secondary btn-sm px-3 fw-bold">-</button>
+                </form>
+
+                <span class="px-3 py-1 bg-light border d-flex align-items-center justify-content-center fw-bold" style="min-width: 45px;">
+                    <%= item.qty %>
+                </span>
+
+                <form action="/cart/update-qty" method="POST" style="display:inline;">
+                    <input type="hidden" name="productId" value="<%= item.id %>">
+                    <input type="hidden" name="userInput" value="increase">
+                    <button type="submit" class="btn btn-outline-secondary btn-sm px-3 fw-bold">+</button>
+                </form>
+            </div>  
+
+                <a href="/cart/remove/<%= item.id %>" class="text-danger text-decoration-none fw-bold" onclick="return confirm('Are you sure?')">
+                    Remove
+                </a>
+            </div>
+        </div> <% }) %>
+        </div>
+
+        <div class="cart-total mt-5 text-end border-top pt-4">
+            <p class="mb-1 text-muted">Subtotal: <span class="fw-bold text-dark">$<%= subtotal %></span></p>
+            <p class="mb-3 text-muted">Tax (10%): <span class="fw-bold text-dark">$<%= tax %></span></p>
+            <div class="mb-4">
+                <span class="cart-total-title fs-3 fw-bold">Total</span>
+                <span class="cart-total-price fs-2 fw-bold text-primary ms-3">$<%= finaltotal %></span>
+            </div>
+            <form action="/cart/place-order" method="POST">
+                <button class="btn btn-primary btn-lg px-5 fw-bold shadow" type="submit">PURCHASE</button>
+            </form>
+        </div>
+
+    <% } else { %>
+        <div class="text-center py-5">
+            <h2 class="display-5 fw-bold">Your cart is empty</h2>
+            <a class="btn btn-dark mt-3 px-5 py-3" href="/mealkits">RETURN TO STORE</a>
+        </div>
+    <% } %>
+</section>

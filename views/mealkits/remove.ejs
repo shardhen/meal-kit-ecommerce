@@ -1,0 +1,26 @@
+<!--  Reference tag 
+// I used the layout reference of the alret for the confirmation message for the remove item. 
+// Reference: https://getbootstrap.com/docs/5.3/components/card/ --> 
+
+<div class="container mt-5 mb-5 text-center" style="min-height: 400px;">
+    <h2 class="fw-bold mb-4">REMOVE MEAL KIT</h2>
+    
+    <div class="alert alert-warning shadow-sm mb-4">
+        <strong>Warning!</strong> Are you sure you want to delete this item? This action cannot be undone.
+    </div>
+
+    <div class="card mx-auto shadow-sm" style="max-width: 400px; border-radius: 15px; overflow: hidden;">
+        <img src="<%= mealKit.imageUrl %>" class="card-img-top" alt="<%= mealKit.title %>" style="height: 250px; object-fit: cover;">
+        
+        <div class="card-body bg-light">
+            <h5 class="card-title fw-bold"><%= mealKit.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= mealKit.category %></h6>
+            <p class="card-text fw-bold text-danger fs-5">$<%= mealKit.price %></p>
+
+            <form method="POST" action="/mealkits/remove/<%= mealKit._id %>" class="d-grid gap-2 mt-3">
+                <button type="submit" class="btn btn-danger fw-bold shadow-sm py-2">YES, DELETE</button>
+                <a href="/mealkits/list" class="btn btn-outline-secondary fw-bold py-2">CANCEL</a>
+            </form>
+        </div>
+    </div>
+</div>

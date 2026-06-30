@@ -1,0 +1,27 @@
+<% if (selectedMealKit) { %>
+    <div class="card h-100 border-0 shadow-sm">
+        <div calss="card-header bg-dark text-white fw-bold text-center"> 
+        <img src="<%= selectedMealKit.imageUrl %>" class="card-img-top fw-bold" alt="<%= selectedMealKit.title %>">
+        </div>
+        <div class="card-body">
+         <h5 class="card-title fw-bold mt-2"><%= selectedMealKit.title %></h5>
+         <p class="card-text text-muted fw-bold"><%= selectedMealKit.description %></p>
+         <p class="badge rounded-pill bg-primary fs-6 "<p class="badge rounded-pill bg-primary fs-6 ">$<%= selectedMealKit.price.toFixed(2) %></p>
+
+<% if (typeof user !== 'undefined' && user && user.role === "customer") { %>
+    <a href="/add-to-cart/<%= selectedMealKit._id %>" class="btn btn-warning w-100 fw-bold mt-2 mb-3">
+        Buy
+    </a>
+<% } %>
+
+<p class="card-text small text-secondary">
+    Serving <%= selectedMealKit.servings %> 
+</p>
+            </p>
+        </div>
+    </div>
+<% } else { %>
+    <div class="alert alert-warning">
+        Information is hidden for this item.
+    </div>
+<% } %>

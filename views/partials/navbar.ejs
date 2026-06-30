@@ -1,0 +1,43 @@
+<!-- Reference for nav html frame from https://bootswatch.com/lux/ -->
+
+<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+  <div class="container-fluid">
+     <!-- IMG source /images/logo from gemini image generation -->
+     <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="rean's Logo" width="250"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active fs-5" href="/">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item fs-5">
+          <a class="nav-link" href="/mealkits">On The Menu</a>
+        </li>
+        <%if(typeof user === "undefined"){ %>
+        <li class="nav-item fs-5">
+          <a class="nav-link" href="/sign-up">Sign Up</a>
+        </li>
+        <li class="nav-item fs-5">
+          <a class="nav-link" href="/log-in">Log In</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item fs-5">
+         <% if (user.role === 'clerk') { %>
+        <a class="nav-link" href="/mealkits/list">Hello, <%= user.firstName %>!</a>
+    <% } else { %>
+        <a class="nav-link" href="/cart">Hello, <%= user.firstName %>!</a>
+    <% } %>
+        </li>
+        <li class="nav-item fs-5">
+       <a class="nav-link" href="/log-out">Log out</a>
+       </li>
+       <% } %>
+      </ul>
+
+    </div>
+  </div>
+</nav>

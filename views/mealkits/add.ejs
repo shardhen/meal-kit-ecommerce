@@ -1,0 +1,89 @@
+<!--  Reference tag 
+// I applied the 'Form Grid' layout from the reference to create a responsive adding form. 
+// Reference: https://getbootstrap.com/docs/5.3/forms/layout/ --> 
+
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4 fw-bold">Add Meal Kit</h1>
+
+    <form class="row g-3 shadow p-4 rounded bg-light" method="POST" action="/mealkits/add" enctype="multipart/form-data">
+
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Title</label>
+            <input type="text" name="title" class="form-control" value="<%= values.title || '' %>">
+            <% if (errors.title) { %>
+                <div class="text-danger small"><%= errors.title %></div>
+            <% } %>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Category</label>
+            <input type="text" name="category" class="form-control" value="<%= values.category || '' %>">
+            <% if (errors.category) { %>
+                <div class="text-danger small"><%= errors.category %></div>
+            <% } %>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Includes</label>
+            <input type="text" name="includes" class="form-control" value="<%= values.includes || '' %>">
+            <% if (errors.includes) { %>
+                <div class="text-danger small"><%= errors.includes %></div>
+            <% } %>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Description</label>
+            <textarea name="description" class="form-control" rows="3"><%= values.description || '' %></textarea>
+            <% if (errors.description) { %>
+                <div class="text-danger small"><%= errors.description %></div>
+            <% } %>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Price</label>
+            <input type="number" name="price" class="form-control" value="<%= values.price || '' %>">
+            <% if (errors.price) { %>
+                <div class="text-danger small"><%= errors.price %></div>
+            <% } %>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Cooking Time</label>
+            <input type="number" name="cookingTime" class="form-control" value="<%= values.cookingTime || '' %>">
+            <% if (errors.cookingTime) { %>
+                <div class="text-danger small"><%= errors.cookingTime %></div>
+            <% } %>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Servings</label>
+            <input type="number" name="servings" class="form-control" value="<%= values.servings || '' %>">
+            <% if (errors.servings) { %>
+                <div class="text-danger small"><%= errors.servings %></div>
+            <% } %>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold">Image</label>
+            <input type="file" name="imageUrl" class="form-control">
+            <% if (errors.imageUrl) { %>
+                <div class="text-danger small"><%= errors.imageUrl %></div>
+            <% } %>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input type="checkbox" name="featuredMealKit" class="form-check-input" id="featuredCheck" <%= values.featuredMealKit ? "checked" : "" %>>
+                <label class="form-check-label" for="featuredCheck">
+                    Featured Meal Kit
+                </label>
+            </div>
+        </div>
+
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-dark px-5 shadow">Add Meal Kit</button>
+            <a href="/mealkits/list" class="btn btn-outline-secondary px-5">Cancel</a>
+        </div>
+
+    </form>
+</div>

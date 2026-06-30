@@ -1,0 +1,91 @@
+<!-- Base structure for Hero html frame https://mdbootstrap.com/docs/standard/extended/hero/#! modified by Chanhee Han-->
+
+<div class="p-5 text-center bg-image rounded-3" style="
+    background-image: url('/images/home_Hero.jpg');
+    height: 400px;
+    background-size: cover;
+     background-position: Center;
+  ">
+    <div class="d-flex flex-column justify-content-end align-items-center h-100">
+      <div class="text-white">
+ 
+        <a data-mdb-ripple-init class="btn btn-outline-dark btn-lg fw-bold" style="background-color:white" href="/on-the-menu" role="button">Experience Now!</a>
+      </div>
+  </div>
+</div>
+
+<!-- Base structure for Content Section html frame from https://bootswatch.com/lux/ modified by Chanhee Han -->
+<div class="homeSection container-fluid border-0 shadow-sm">
+    <div class="row">
+        <div class="col p-0">
+            <h1 class="text-center mt-5 mb-4">What we offer</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold text-center">Authenticity</div>
+                <!-- IMG source /images/home_Authenticity from chatGPT image generation -->
+                <img src="/images/home_Authenticity.jpg" alt="Image Not Found">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Korean Ingredients</h5>
+                    <p class="card-text text-muted fw-bold">All ingredient and receipt are from Korea.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold text-center">Experience</div>
+                <!-- IMG source /images/home_Order from chatGPT image generation -->
+                <img src="/images/home_Order.jpg" alt="Image Not Found">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Order the Korea</h5>
+                    <p class="card-text text-muted fw-bold">By a quick order offers you a new exprience.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold text-center">Freshness</div>
+                <!-- IMG source /images/home_Preparation from chatGPT image generation -->
+                <img src="/images/home_Preparation.jpg" alt="Image Not Found">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Fresh Preparation</h5>
+                    <p class="card-text text-muted fw-bold">Every meal are prepared upon your order. We do not accept stocks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+          <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold text-center">Enjoyment</div>
+                <!-- IMG source /images/home_Enjoyment from chatGPT image generation -->
+                <img src="/images/home_Enjoyment.jpg" alt="Image Not Found">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Feel Korea!</h5>
+                   <p class="card-text text-muted fw-bold">Enjoy the meal making you feel you are in the one of the popular restuarnt in Korea.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+        <div class="col p-0">
+            <h1 class="text-center mt-5 mb-4">Featured Meals</h1>
+        </div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 py-5">
+    <% if (typeof featuredMealKits !== 'undefined' && featuredMealKits.length > 0) { %>
+        <% featuredMealKits.forEach(featuredMealKit => { %>
+            <div class="col">
+                <%- include("partials/mealkit", { selectedMealKit:featuredMealKit }) %>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <div class="col-12 text-center">
+            <p>No featured meal kits available.</p>
+        </div>
+    <% } %>
+</div>
