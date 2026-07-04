@@ -1,19 +1,22 @@
-<% if (selectedMealKit) { %>
-    <div class="card h-100 border-0 shadow-sm">
-        <div calss="card-header bg-dark text-white fw-bold text-center"> 
-        <img src="<%= selectedMealKit.imageUrl %>" class="card-img-top fw-bold" alt="<%= selectedMealKit.title %>">
-        </div>
-        <div class="card-body">
-         <h5 class="card-title fw-bold mt-2"><%= selectedMealKit.title %></h5>
-         <p class="card-text text-muted fw-bold"><%= selectedMealKit.description %></p>
-         <p class="badge rounded-pill bg-primary fs-6 ">$<%= selectedMealKit.price.toFixed(2) %></p>
-         <p class="card-text small text-secondary">
-                Serving <%= selectedMealKit.servings %> 
-            </p>
-        </div>
+<div class="card meal-card h-100">
+  <div class="meal-image-wrap">
+    <img src="<%= selectedMealKit.imageUrl %>" class="card-img-top" alt="<%= selectedMealKit.title %>">
+    <span class="heart-icon">♡</span>
+  </div>
+
+  <div class="card-body d-flex flex-column">
+    <h5 class="meal-title"><%= selectedMealKit.title %></h5>
+
+    <p class="meal-description">
+      <%= selectedMealKit.description %>
+    </p>
+
+    <div class="mt-auto">
+      <p class="meal-price">$<%= Number(selectedMealKit.price).toFixed(2) %></p>
+
+      <a href="/add-to-cart/<%= selectedMealKit._id %>" class="btn btn-dark w-100 add-cart-btn">
+        <i class="bi bi-cart"></i> Add to Cart
+      </a>
     </div>
-<% } else { %>
-    <div class="alert alert-warning">
-        Information is hidden for this item.
-    </div>
-<% } %>
+  </div>
+</div>

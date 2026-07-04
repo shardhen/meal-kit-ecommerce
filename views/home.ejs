@@ -1,91 +1,99 @@
-<!-- Base structure for Hero html frame https://mdbootstrap.com/docs/standard/extended/hero/#! modified by Chanhee Han-->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center min-vh-hero">
+      <div class="col-lg-6">
+        <p class="eyebrow">Authentic Korean Meal Kits</p>
 
-<div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('/images/home_Hero.jpg');
-    height: 400px;
-    background-size: cover;
-     background-position: Center;
-  ">
-    <div class="d-flex flex-column justify-content-end align-items-center h-100">
-      <div class="text-white">
- 
-        <a data-mdb-ripple-init class="btn btn-outline-dark btn-lg fw-bold" style="background-color:white" href="/on-the-menu" role="button">Experience Now!</a>
+        <h1 class="hero-title">
+          Delivering More Than Food,<br>
+          Delivering Authenticity.
+        </h1>
+
+        <p class="hero-text">
+          Authentic Korean meal kits made with fresh ingredients, delivered to your door.
+          Enjoy restaurant-quality Korean dishes at home with simple cooking steps.
+        </p>
+
+        <a href="/mealkits" class="btn btn-dark hero-btn">
+          Explore Meal Kits <span>→</span>
+        </a>
       </div>
+
+      <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="hero-image-wrap">
+          <img src="/images/home_Hero.jpg" alt="Korean meal kit" class="hero-image">
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Base structure for Content Section html frame from https://bootswatch.com/lux/ modified by Chanhee Han -->
-<div class="homeSection container-fluid border-0 shadow-sm">
-    <div class="row">
-        <div class="col p-0">
-            <h1 class="text-center mt-5 mb-4">What we offer</h1>
-        </div>
-    </div>
+<section class="features-section">
+  <div class="container">
+    <div class="row text-center g-4">
 
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-dark text-white fw-bold text-center">Authenticity</div>
-                <!-- IMG source /images/home_Authenticity from chatGPT image generation -->
-                <img src="/images/home_Authenticity.jpg" alt="Image Not Found">
-                <div class="card-body">
-                    <h5 class="card-title text-dark">Korean Ingredients</h5>
-                    <p class="card-text text-muted fw-bold">All ingredient and receipt are from Korea.</p>
-                </div>
-            </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feature-icon">🌿</div>
+          <h5>Authentic Ingredients</h5>
+          <p>Carefully selected Korean-inspired ingredients for real flavours.</p>
         </div>
+      </div>
 
-        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-dark text-white fw-bold text-center">Experience</div>
-                <!-- IMG source /images/home_Order from chatGPT image generation -->
-                <img src="/images/home_Order.jpg" alt="Image Not Found">
-                <div class="card-body">
-                    <h5 class="card-title text-dark">Order the Korea</h5>
-                    <p class="card-text text-muted fw-bold">By a quick order offers you a new exprience.</p>
-                </div>
-            </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feature-icon">📦</div>
+          <h5>Easy & Quick</h5>
+          <p>Simple ordering and convenient meal kits delivered to your door.</p>
         </div>
+      </div>
 
-        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-dark text-white fw-bold text-center">Freshness</div>
-                <!-- IMG source /images/home_Preparation from chatGPT image generation -->
-                <img src="/images/home_Preparation.jpg" alt="Image Not Found">
-                <div class="card-body">
-                    <h5 class="card-title text-dark">Fresh Preparation</h5>
-                    <p class="card-text text-muted fw-bold">Every meal are prepared upon your order. We do not accept stocks.</p>
-                </div>
-            </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feature-icon">👨‍🍳</div>
+          <h5>Freshly Prepared</h5>
+          <p>Prepared with freshness, quality, and convenience in mind.</p>
         </div>
+      </div>
 
-        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-          <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-dark text-white fw-bold text-center">Enjoyment</div>
-                <!-- IMG source /images/home_Enjoyment from chatGPT image generation -->
-                <img src="/images/home_Enjoyment.jpg" alt="Image Not Found">
-                <div class="card-body">
-                    <h5 class="card-title text-dark">Feel Korea!</h5>
-                   <p class="card-text text-muted fw-bold">Enjoy the meal making you feel you are in the one of the popular restuarnt in Korea.</p>
-                </div>
-            </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feature-icon">♡</div>
+          <h5>Enjoy at Home</h5>
+          <p>Experience the taste of Korea from the comfort of your home.</p>
         </div>
+      </div>
 
     </div>
-</div>
-        <div class="col p-0">
-            <h1 class="text-center mt-5 mb-4">Featured Meals</h1>
-        </div>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 py-5">
-    <% if (typeof featuredMealKits !== 'undefined' && featuredMealKits.length > 0) { %>
+  </div>
+</section>
+
+<section class="featured-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <p class="section-label">Featured</p>
+      <h2>Featured Meal Kits</h2>
+      <p>Handpicked favourites loved by our customers.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      <% if (typeof featuredMealKits !== 'undefined' && featuredMealKits.length > 0) { %>
         <% featuredMealKits.forEach(featuredMealKit => { %>
-            <div class="col">
-                <%- include("partials/mealkit", { selectedMealKit:featuredMealKit }) %>
-            </div>
+          <div class="col">
+            <%- include("../mealkits/mealkit", { selectedMealKit: featuredMealKit }) %>
+          </div>
         <% }) %>
-    <% } else { %>
+      <% } else { %>
         <div class="col-12 text-center">
-            <p>No featured meal kits available.</p>
+          <p>No featured meal kits available.</p>
         </div>
-    <% } %>
-</div>
+      <% } %>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/mealkits" class="btn btn-outline-dark view-all-btn">
+        View All Meal Kits <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>

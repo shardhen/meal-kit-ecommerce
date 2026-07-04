@@ -1,40 +1,43 @@
-<!-- Base structure for footer html from https://getbootstrap.com/docs/5.3/examples/footers/# modified by Chanhee Han-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-<h>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-</h>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-simple">
 
-<div class="container text-center">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-8 d-flex flex-column align-items-start align-items-center">
-      <p class="text-center text-body-secondary bold">By submitting this assignment I declare that this assignment is my own work in accordance with the Seneca Academic Policy. No part of this assignment has been copied manually or electronically from any other source (including web sites) or distributed to other students.</p><br>
-      <p class="text-center fw-bold" > © 2026 Chanhee Han All rights reserved.</p>
+      <div class="footer-brand">
+        <img src="/images/logo.png" alt="rean logo" class="footer-logo">
+
+        <p class="footer-text mt-3">
+          Fresh Korean-inspired meal kits made for simple and enjoyable cooking at home.
+        </p>
+
+        <div class="social-links mt-4">
+          <a href="https://github.com/shardhen/meal-kit-ecommerce" target="_blank">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav-wrap">
+        <h6>Navigation</h6>
+        <div class="footer-nav">
+          <a href="/">Home</a>
+          <a href="/mealkits">Meal Kits</a>
+          <a href="/sign-up">Sign Up</a>
+          <a href="/log-in">Log In</a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="right col-md-2 mb-3"> 
-      <h5>Navigator</h5> 
-      <ul class="nav flex-column"> 
-        <li class="nav-item mb-2">
-          <a href="#" class="nav-link p-0 text-body-secondary">Go to the Top</a></li> 
-          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Home</a></li> 
-          <li class="nav-item mb-2"><a href="/mealkits" class="nav-link p-0 text-body-secondary">On-The-Menu</a></li> 
-          <li class="nav-item mb-2"><a href="/sign-up" class="nav-link p-0 text-body-secondary">Sign-up</a></li> 
-          <li class="nav-item mb-2"><a href="/log-in" class="nav-link p-0 text-body-secondary">Log-In</a></li>
-   </div>
-    
-<ul class="nav list-unstyled d-flex mb-0">
-   <li class="ms-3">
-      <a class="text-body-secondary" href="https://www.instagram.com/">
-       <i class="bi bi-instagram"></i>
-     </a>
-    </li>
-
-    <li class="ms-3">
-      <a class="text-body-secondary" href="https://www.facebook.com/">
-        <i class="bi bi-facebook"></i>
-     </a>
-   </li>
-</ul>
- </div>
-  </footer>
-
+  <div class="footer-bottom">
+  <p>© 2026 rean. Designed & Developed by Chanhee Han.</p>
+  <p class="ai-disclaimer">
+    Some images on this website were generated using AI tools for portfolio demonstration purposes.
+  </p>
+</div>
+  </div>
+</footer>
