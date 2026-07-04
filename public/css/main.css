@@ -465,7 +465,7 @@ body {
 
 .footer-nav-wrap {
   margin-left: auto;
-  min-width: 220px;
+  min-width: 520px;
   text-align: left;
 }
 
@@ -484,7 +484,7 @@ body {
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .footer-simple {
     flex-direction: column;
   }
