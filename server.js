@@ -1,15 +1,3 @@
-/*************************************************************************************
-* WEB322 - 2261 Project
-* I declare that this assignment is my own work in accordance with the Seneca Academic
-* Policy. No part of this assignment has been copied manually or electronically from
-* any other source (including web sites) or distributed to other students.
-*
-* Student Name  : Chanhee Han
-* Student ID    : 153186218
-* Student Email : chan23@myseneca.ca
-* Course/Section: WEB322/NCC
-*
-**************************************************************************************/
 require('dotenv').config({ path: './config/.env' });
 const mealkitUtil = require("./modules/mealkit-util");
 const path = require("path");
@@ -28,9 +16,10 @@ app.use(express.urlencoded({extended: false}));
 app.use(fileUpload());
 
 app.use(session({
-secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true 
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_CONNECTION_STRING }) 
 }));
 
 app.use((req,res,next) =>{
