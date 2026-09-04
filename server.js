@@ -7,7 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 
 // Set up Body Parser
 app.use(express.urlencoded({extended: false})); 
@@ -49,12 +49,13 @@ app.use("/load-data", loadDataController);
 // MongoDB connection Setting
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
 .then(() => {
-    console.log("Connected to the Server");
-    app.listen(HTTP_PORT, onHttpStart);
+    console.log("Connected to MongoDB");
 })
-.catch(err =>{
-    console.log("Could not connect to the Server");
+.catch(err => {
+    console.error("MongoDB connection error:", err);
 });
+
+module.exports = app;
 
 // This use() will not allow requests to go beyond it
 // so we place it at the end of the file, after the other routes.
@@ -68,10 +69,13 @@ app.use((req, res) => {
         statusCode: 404 });
 });
 
-app.use((req, res) => {
+app.use((err, req, res, next) => {
+    console.error(err);
+
     res.status(500).render("error", { 
         title: "Internal Server Error",
-        statusCode: 500 });
+        statusCode: 500
+    });
 });
 
 
