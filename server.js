@@ -7,7 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
-
+const MongoStore = require("connect-mongo");
 
 // Set up Body Parser
 app.use(express.urlencoded({extended: false})); 
