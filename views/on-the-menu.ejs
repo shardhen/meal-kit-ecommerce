@@ -1,32 +1,19 @@
 <div class="container py-5">
-
     <h1 class="mb-5">Our Meal Kits</h1>
-
     <% if (typeof allMealKits !== 'undefined' && allMealKits.length > 0) { %>
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-
-           <% allMealKits.forEach((mealkit, index) => { %>
-
-            <div class="col">
-
-                <%- include("../partials/mealkit", {
-                    selectedMealKit: mealkit,
-                    mealKitIndex: index
-                }) %>
-
-            </div>
-
-<% }) %>
-
+            <% allMealKits.forEach((mealkit, index) => { %>
+                <div class="col">
+                    <%- include("../partials/mealkit", {
+                        selectedMealKit: mealkit,
+                        mealKitIndex: index
+                    }) %>
+                </div>
+            <% }) %>
         </div>
-
     <% } else { %>
-
         <div class="text-center py-5">
             <p class="lead">No meal kits available at the moment.</p>
         </div>
-
     <% } %>
-
 </div>
