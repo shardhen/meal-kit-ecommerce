@@ -286,61 +286,47 @@ router.post("/remove/:id", (req, res) => {
 });
 
 router.get("/add-mealkit/:id", (req, res) => {
-    let message;
-    const mealkitId = req.params.id;
 
-    if (req.session.user && req.session.user.role == "customer") {
+    const mealkitIndex = parseInt(req.params.id);
+
+    if (req.session.user && req.session.user.role === "customer") {
+
+        const allMealKits = mealkitUtil.getAllMealKits();
+        const mealkit = allMealKits[mealkitIndex];
+
+        if (!mealkit) {
+            return res.status(404).render("error", {
+                title: "Not Found",
+                statusCode: 404,
+                message: "Meal kit not found."
+            });
+        }
 
         let cart = req.session.cart = req.session.cart || [];
 
-        mealkitModel.findById(mealkitId).then(mealkit => {
-            if (mealkit) {
+        let found = false;
 
-                let found = false;
-
-                cart.forEach(cartItem => {
-                    if (cartItem.id == mealkitId) {
-                        found = true;
-                        cartItem.qty++; 
-                    }
-                });
-
-                if (found) {
-                    message = `The meal kit "${mealkit.title}" was already in the cart.`;
-                }
-                else 
-                {
-                cart.push({
-                    id: mealkitId,
-                    qty: 1,
-                    mealkit 
-                });
-
-                    cart.sort((a, b) => a.mealkit.title.localeCompare(b.mealkit.title));
-
-                    message = `The meal kit "${mealkit.title}" was added to the cart.`;
-                }
-
-
-                res.render("/cart", {
-                    title: "Your Shopping Cart",
-                    message: message,
-                    cart: cart
-                });
-
+        cart.forEach(cartItem => {
+            if (cartItem.id == mealkitIndex) {
+                found = true;
+                cartItem.qty++;
             }
-            else {
-                message = `The meal kit with ID ${mealkitId} doesn't exist.`;
-                res.render("error", { title: "Error", message });
-            }
-        }).catch(err => {
-            console.log("Error finding meal kit: " + err);
-            res.redirect("/mealkits/on-the-menu");
         });
 
+        if (!found) {
+            cart.push({
+                id: mealkitIndex,
+                qty: 1,
+                mealkit: mealkit
+            });
+        }
+
+        req.session.cart = cart;
+
+        res.redirect("/cart");
+
     } else {
-        message = "You must be logged in as a customer to purchase.";
-        res.render("accounts/login", { title: "Login", error: message });
+        res.redirect("/log-in");
     }
 });
 

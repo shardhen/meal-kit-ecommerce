@@ -6,10 +6,13 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
-            <% allMealKits.forEach(mealkit => { %>
+            <% allMealKits.forEach((mealkit, index) => { %>
 
                 <div class="col">
-                    <%- include("partials/mealkit", { selectedMealKit: mealkit }) %>
+                    <%- include("partials/mealkit", {
+                            selectedMealKit: mealkit,
+                            mealKitIndex: index
+                        }) %>
                 </div>
 
             <% }) %>

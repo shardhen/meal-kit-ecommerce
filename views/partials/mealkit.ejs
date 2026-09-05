@@ -14,8 +14,8 @@
     <div class="mt-auto">
       <p class="meal-price">$<%= Number(selectedMealKit.price).toFixed(2) %></p>
 
-      <a href="/add-to-cart/<%= selectedMealKit._id %>" class="btn btn-dark w-100 add-cart-btn">
-        <i class="bi bi-cart"></i> Add to Cart
+      <a href="/mealkits/add-mealkit/<%= mealKitIndex %>">
+          Add to Cart </a>
       </a>
     </div>
   </div>
