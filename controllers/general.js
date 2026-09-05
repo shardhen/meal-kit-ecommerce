@@ -353,19 +353,18 @@ router.post("/cart/place-order", (req, res) => {
 // I applied this logic to manage the shopping cart quantity, I used the find() method to get the object reference of the item so that i could identify what item i need to increase
 // from https://medium.com/@sohail_saifi/building-a-shopping-cart-session-based-vs-database-backed-745260091f30
 router.post("/cart/update-qty", (req, res) => {
-    const { productId, userInput } = req.body; 
+    const { productId, userInput } = req.body;
     let cart = req.session.cart || [];
-
-    const existingItem = cart.find(item => item.id === productId);
-
+    const existingItem = cart.find(item => item.id == productId);
     if (existingItem) {
         if (userInput === "increase") {
-            existingItem.quantity++;
-        } else if (userInput === "decrease" && existingItem.quantity > 1) {
-            existingItem.quantity--;
+            existingItem.qty++;
+        }
+        else if (userInput === "decrease" && existingItem.qty > 1) {
+            existingItem.qty--;
         }
     }
-
+    req.session.cart = cart;
     res.redirect("/cart");
 });
 
