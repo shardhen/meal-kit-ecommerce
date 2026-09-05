@@ -29,7 +29,7 @@
 
         <% if (typeof user !== 'undefined' && user && user.role === "customer") { %>
           <a href="/add-to-cart/<%= selectedMealKit._id %>" class="btn btn-dark w-100 add-cart-btn">
-            Add to Cart
+              Add to Cart
           </a>
         <% } else { %>
           <a href="/log-in" class="btn btn-outline-dark w-100 add-cart-btn">

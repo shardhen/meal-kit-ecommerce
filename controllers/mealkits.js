@@ -6,14 +6,19 @@ const path = require("path");
 const fs = require("fs");
 
 router.get("/", (req, res) => {
-
-    const mealkits = mealkitUtil.getAllMealKits();
-
-    res.render("mealkits/on-the-menu", {
-        allMealKits: mealkits,
-        title: "On The Menu"
-    });
-
+    mealkitModel.find()
+        .then(mealkits => {
+            res.render("mealkits/on-the-menu", {
+                allMealKits: mealkits,
+                title: "On The Menu"
+            });
+        })
+        .catch(err => {
+            res.status(500).render("error", {
+                title: "Error",
+                statusCode: 500
+            });
+        });
 });
 
 router.get("/list", (req, res) => {

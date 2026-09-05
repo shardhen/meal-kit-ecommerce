@@ -233,36 +233,35 @@ router.get("/cart", (req, res) => {
 
 router.get("/add-to-cart/:id", (req, res) => {
 
-    const index = parseInt(req.params.id);
-
     if (req.session.user && req.session.user.role === "customer") {
 
-        const allMealKits = mealkitUtil.getAllMealKits();
-        const product = allMealKits[index];
-
-        if (!product) {
-            return res.status(404).render("error", {
-                title: "Not Found",
-                statusCode: 404
+        mealkitModel.findById(req.params.id)
+            .then(product => {
+                if (!product) {
+                    return res.status(404).render("error", {
+                        title: "Not Found",
+                        statusCode: 404
+                    });
+                }
+                let cart = req.session.cart = req.session.cart || [];
+                let found = cart.find(item => item.id == req.params.id);
+                if (found) {
+                    found.qty++;
+                } else {
+                    cart.push({
+                        id: req.params.id,
+                        qty: 1,
+                        mealkit: product
+                    });
+                }
+                res.redirect("/cart");
+            })
+            .catch(err => {
+                res.status(500).render("error", {
+                    title: "Error",
+                    statusCode: 500
+                });
             });
-        }
-        let cart = req.session.cart = req.session.cart || [];
-        let found = false;
-        cart.forEach(item => {
-            if (item.id == index) {
-                found = true;
-                item.qty++;
-            }
-        });
-        if (!found) {
-            cart.push({
-                id: index,
-                qty: 1,
-                mealkit: product
-            });
-        }
-        res.redirect("/cart");
-
     } else {
         res.redirect("/log-in");
     }
