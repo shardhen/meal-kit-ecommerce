@@ -3,19 +3,15 @@
     <img src="<%= selectedMealKit.imageUrl %>" class="card-img-top" alt="<%= selectedMealKit.title %>">
     <span class="heart-icon">♡</span>
   </div>
-
   <div class="card-body d-flex flex-column">
     <h5 class="meal-title"><%= selectedMealKit.title %></h5>
-
     <p class="meal-description">
       <%= selectedMealKit.description %>
     </p>
-
     <div class="mt-auto">
       <p class="meal-price">$<%= Number(selectedMealKit.price).toFixed(2) %></p>
-
       <a href="/mealkits/add-mealkit/<%= mealKitIndex %>">
-          Add to Cart </a>
+        Add to Cart
       </a>
     </div>
   </div>
