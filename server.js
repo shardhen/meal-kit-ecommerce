@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
 const MongoStore = require("connect-mongo").default;
+const mealkitModel = require("./models/mealkitModel");
 
 // Set up Body Parser
 app.use(express.urlencoded({extended: false})); 
