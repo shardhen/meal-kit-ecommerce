@@ -285,7 +285,7 @@ router.post("/remove/:id", (req, res) => {
     }
 });
 
-router.get("/mealkits/add-mealkit/:id", (req, res) => {
+router.get("/add-mealkit/:id", (req, res) => {
     let message;
     const mealkitId = req.params.id;
 
