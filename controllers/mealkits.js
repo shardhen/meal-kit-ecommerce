@@ -6,21 +6,14 @@ const path = require("path");
 const fs = require("fs");
 
 router.get("/", (req, res) => {
-    mealkitModel.find()
-        .then(mealkits => {
-            res.render("mealkits/on-the-menu", {
-                allMealKits: mealkits,
-                title: "On The Menu"
-            });
-        })  
-        .catch(err => {
-            console.log(err);
-            res.status(500).render("error", { 
-                statusCode: 500, 
-                title: "Error", 
-                message: "Could not retrieve the data."
-            });
-        });
+
+    const mealkits = mealkitUtil.getAllMealKits();
+
+    res.render("mealkits/on-the-menu", {
+        allMealKits: mealkits,
+        title: "On The Menu"
+    });
+
 });
 
 router.get("/list", (req, res) => {
