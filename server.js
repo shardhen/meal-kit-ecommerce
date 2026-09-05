@@ -48,8 +48,19 @@ app.use("/load-data", loadDataController);
 
 // MongoDB connection Setting
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
-.then(() => {
+.then(async () => {
     console.log("Connected to MongoDB");
+
+    const count = await mealkitModel.countDocuments();
+
+    if (count === 0) {
+        const initialMealKits = mealkitUtil.getAllMealKits();
+        await mealkitModel.insertMany(initialMealKits);
+
+        console.log("Initial meal kits added to MongoDB");
+    } else {
+        console.log("Meal kits already exist in MongoDB");
+    }
 })
 .catch(err => {
     console.error("MongoDB connection error:", err);
